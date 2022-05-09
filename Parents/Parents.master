@@ -1,0 +1,39 @@
+﻿<%@ Master Language="C#"  AutoEventWireup="true" CodeFile="Parents.master.cs" Inherits="Parents" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <link href='../isweeep.css' rel='stylesheet' type='text/css' />
+    
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+
+<body>
+<div id="top">
+    <%--<div id="header">Project Registration</div>--%>
+</div>
+<div id="content">
+    <form id="form1" runat="server">
+        <div id="contestantName" style="padding:3px 5px 2px 5px;font-weight:bold"> Contestant: <%= Session["ChildName"] %></div>    
+        <div id="menuDiv">
+            
+            <a class="menu" href="Checklist.aspx">Checklist</a>
+            <a class="menu" href="CodeOfConduct.aspx">Code of Conduct Form</a>
+            <a class="menu" href="MediaReleaseForm.aspx">Media Release Form</a>
+            <a class="menu" href="logout.aspx">Log Out</a>
+           
+        </div>
+        <div id="contentDiv">
+            <asp:ContentPlaceHolder ID="cp1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <br style="clear:both;">
+    </form>
+</div>
+<div id="bot">
+
+</div>
+</body>
+
+</html>

@@ -1,0 +1,76 @@
+﻿<%@ Master Language="C#"  AutoEventWireup="true" CodeFile="adultSV.master.cs" Inherits="adultSV" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<title>Adult Supervisor Registration</title>    
+<link rel="shortcut icon" href="favicon.ico?v=1" type="image/x-icon" />
+<link href='../isweeep.css' rel='stylesheet' type='text/css' />
+<link href='../jquery.datepick.css' rel='stylesheet' type='text/css' />
+
+
+  
+<asp:ContentPlaceHolder ID="head" runat="server">
+</asp:ContentPlaceHolder>
+
+<script type="text/javascript" src="../Scripts/jquery-2.1.0.min.js"></script>    
+<script type="text/javascript" src="../Scripts/jquery.datepick1.js"></script>  
+<script type="text/javascript" src="../Scripts/jquery.datepick.js"></script>   
+    
+
+
+ <script type="text/javascript">
+     $(document).ready(function () {
+         $("[id$=txtPassportExpDate]").datepick();    
+  });
+ </script>
+ <script type="text/javascript">
+                //<![CDATA[ 
+                $(document).ready(function () {
+                    var url = $(location).attr('href');
+                    url = url.substr(url.lastIndexOf('/') + 1);
+                    $('li:has(a[href="' + url + '"])').addClass('active');
+                });
+                //]]>      
+</script> 
+</head>
+
+<body>
+<div id="top">
+    <%--<div id="header">Project Registration</div>--%>
+</div>
+<div id="content">
+    <form id="form1" runat="server">            
+        <div id="menuDiv">
+           <ul class="navbar-nav">   
+           <li><a class="menu" href="AdultSupervisorinfo.aspx">Adult Supervisor Information</a></li>
+           <li><a class="menu" href="ParticipantInfo.aspx">Contestant Information</a></li>
+           <li><a class="menu" href="AddChaperone.aspx">Add <br/>-Guest<br/>-Additional Supervisor<br/>-Observer Student</a></li>         
+           <li><a class="menu" href="SchoolInformation.aspx">School/Organization Information</a></li>          
+           <li><asp:HyperLink Cssclass="menu" ID="HyperLink1" runat="server" NavigateUrl="Local_US_Embassy.aspx">Local US Embassy</asp:HyperLink></li>               
+           <li><a class="menu" href="TravelDetails.aspx">Travel Details</a></li>                 
+           <li><a class="menu" href="SubmitAll.aspx">Finalize & Submit</a></li>
+               <li><br/></li>
+            <li><asp:Label ID="Labelname" runat="server" Text="" Font-Bold="True"></asp:Label></li> 
+           <li><a class="menu" href="logout.aspx">Log Out</a></li>
+           </ul>
+        </div>
+        <div id="contentDiv">
+            <asp:ContentPlaceHolder ID="cp1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <br style="clear:both;">
+
+
+ 
+     </form>
+
+            </div>
+<div id="bot">
+
+</div>
+
+    <asp:AccessDataSource ID="AccessDataSource1" runat="server" DataFile="~/App_Data/isweeep.mdb"></asp:AccessDataSource>
+</body>
+
+</html>

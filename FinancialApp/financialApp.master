@@ -1,0 +1,39 @@
+﻿<%@ Master Language="C#"  AutoEventWireup="true" CodeFile="financialApp.master.cs" Inherits="financialApp" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>I-SWEEEP Project Registration</title>    
+    <link href='../isweeep.css' rel='stylesheet' type='text/css' />
+    
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+
+<body>
+<div id="top">
+    <%--<div id="header">Project Registration</div>--%>
+</div>
+<div id="content">
+    <form id="form1" runat="server">
+            
+        <div id="menuDiv">
+                <a class="menu" href="FamilyInformation.aspx">Family information</a> 
+                <a class="menu" href="pastProjects.aspx">Awards</a> 
+                <a class="menu" href="ResearchPlan.aspx">Research Plan</a> 
+                <asp:LinkButton runat="server" CausesValidation="false" id="logoutLink" class="menu" OnClick="logout" Text="Logout" />
+                
+        </div>
+        <div id="contentDiv">
+            <asp:ContentPlaceHolder ID="cp1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <br style="clear:both;">
+    </form>
+</div>
+<div id="bot">
+
+</div>
+</body>
+
+</html>

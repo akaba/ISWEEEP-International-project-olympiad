@@ -1,0 +1,112 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="admin.master.cs" Inherits="Admin_admin" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>I-SWEEEP Admin</title> 
+    <link href='../admin.css' rel='stylesheet' type='text/css' />
+    <link href="../chosen.css"  rel='stylesheet' type='text/css' />
+   
+   
+    <link href='../jquery.datepick.css' rel='stylesheet' type='text/css' />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>     
+    <script type="text/javascript" src="../Scripts/jquery-2.1.0.min.js"></script>  
+    <script src="../Scripts/chosen.jquery.min.js" type="text/javascript"></script>
+
+     
+    <script type="text/javascript" src="../Scripts/jquery.datepick1.js"></script>  
+    <script type="text/javascript" src="../Scripts/jquery.datepick.js"></script>   
+    
+       
+     <script type="text/javascript">
+         $(document).ready(function () {
+             $("[id$=txtPassportExpDate]").datepick();
+         });
+    </script>
+   <script type="text/javascript">
+            //<![CDATA[ 
+            $(document).ready(function () {
+                var url = $(location).attr('href');
+                url = url.substr(url.lastIndexOf('/') + 1);
+                $('li:has(a[href="' + url + '"])').addClass('active');
+            });          
+           
+            $(document).ready(function () {
+                $('#ddpreviosyears').change(function () {
+                    if ($('#ddpreviosyears').val()!=0) {
+                        var mylink = "https://www.isweeep.org/" + $('#ddpreviosyears').val() + "/admin/logon.aspx";
+                        window.open(mylink, "_blank");
+                    }
+                });
+            });
+                
+            //]]>
+   </script> 
+</head>
+<body style="margin: 0px; padding: 0px; background-color: #e3ead9">
+    <form defaultbutton="Button1" id="form1" runat="server">        
+
+    <div id="top">
+        ADMIN INTERFACE
+    </div>
+    <div id="menuDiv" class="navbar-collapse collapse">
+       <ul class="nav navbar-nav"> 
+        <li><a class="menu" id="projects" href="projects.aspx">Projects</a></li> 
+        <li><a class="menu" href="contestants.aspx">Contestants</a></li> 
+        <li><a class="menu" href="projectsupervisors.aspx">Project Supervisors</a></li>
+        <li><a class="menu" href="adultsupervisors.aspx">Adult Supervisors</a></li>  
+        <li><a class="menu" href="RegionalStateFairs.aspx">Regional State Fairs</a></li> 
+        <li><a class="menu" href="InternationalAffiliates.aspx">International Affiliates</a></li> 
+        <li><a class="menu" href="projectmerge.aspx">Merge Projects</a></li> 
+        <li><a class="menu" href="AffiliateFroms.aspx">Affiliate Documents</a></li>   
+        <li><a class="menu" href="Statistics.aspx">Statistics</a></li> 
+        <li><a class="menu" href="Query.aspx">QUERIES</a></li>        
+        <li><a class="menu" href="reviews.aspx">Project Reviews</a></li>       
+        <li><a class="menu" href="JudgeCheckin.aspx">Judge Check-in</a></li>
+        <li><a class="menu" target="_blank" href="QualifiedContestants.aspx">Qualified Contestants</a></li> 
+        <li><a class="menu" href="VisaLetter.aspx">Visa Letter</a></li>   
+        <li><br/></li> 
+        <li><asp:Label ID="Labelname" runat="server" Text="" Font-Bold="True"></asp:Label></li>      
+        <li><a class="menu" href="logout.aspx">Log Out</a></li> 
+         <li> 
+         <asp:textbox text="Search Project" onfocus="javascript:this.value=''" style="width:80px;margin-top:10px;margin-left:5px;" id="TextBox1" runat="server" Font-Size="Smaller">
+            </asp:textbox>
+         <asp:button id="Button1" runat="server" text="Go" class="btn btn-default btn-sm" onclick="Button1_Click" />
+         </li>
+         <li>
+          <select id="ddpreviosyears" style="width:140px;margin-left:5px;font-size:small;">
+                <option value="0">Select a Year</option>
+                <option value="isweeep2015">I-SWEEEP 2015</option>
+                <option value="isweeep2014">I-SWEEEP 2014</option>
+                <option value="isweeep2013">I-SWEEEP 2013</option>
+                <option value="isweeep2012">I-SWEEEP 2012</option>
+                <option value="isweeep2011">I-SWEEEP 2011</option>
+                <option value="isweeep2010">I-SWEEEP 2010</option>
+                <option value="isweeep2009">I-SWEEEP 2009</option>
+                <option value="isweeep2008">I-SWEEEP 2008</option>             
+                </select>
+                   
+             </li>
+         </ul> 
+    </div>
+    <div id="contentDiv">
+        <asp:contentplaceholder id="cp1" runat="server">
+        </asp:contentplaceholder>
+    </div>
+
+ <script type="text/javascript">
+            var config = {
+                '.chosen-select': {},
+                '.chosen-select-deselect': { allow_single_deselect: true },
+                '.chosen-select-no-single': { disable_search_threshold: 10 },
+                '.chosen-select-no-results': { no_results_text: 'Oops, nothing found!' },
+                '.chosen-select-width': { width: "95%" }
+            }
+            for (var selector in config) {
+                $(selector).chosen(config[selector]);
+            }
+  </script>
+    </form>
+</body>
+</html>

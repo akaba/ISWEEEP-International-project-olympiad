@@ -1,0 +1,92 @@
+﻿<%@ Master Language="C#"  AutoEventWireup="true" CodeFile="contestant.master.cs" Inherits="contestant" %>
+ 
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>I-SWEEEP Project Registration</title>    
+    <link href='../isweeep.css' rel='stylesheet' type='text/css' />
+     <link href="../chosen.css"  rel='stylesheet' type='text/css' />
+   
+    <link rel="shortcut icon" href="favicon.ico?v=1" type="image/x-icon" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <script  src="../Scripts/jquery-2.1.0.min.js" type="text/javascript"></script>  
+    <script src="../Scripts/chosen.jquery.min.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            //<![CDATA[ 
+            $(document).ready(function () {
+                var url = $(location).attr('href');
+                url = url.substr(url.lastIndexOf('/') + 1);
+                $('li:has(a[href="' + url + '"])').addClass('active');
+            });
+            //]]>      
+   </script> 
+</head>
+
+<body>
+<div id="top">
+ 
+</div>
+<div id="content">
+
+   
+
+<asp:AccessDataSource ID="AccessDataSource1" runat="server" 
+    DataFile="~/App_Data/isweeep.mdb" 
+    SelectCommand="SELECT * FROM [SubmitProject] WHERE ([pid] = ?)">
+    <SelectParameters>
+        <asp:SessionParameter Name="pid" SessionField="pid" Type="Int32" />
+    </SelectParameters>
+</asp:AccessDataSource>
+       
+
+    <form id="form1" runat="server">
+            
+          <div id="menuDiv">
+       <ul class="nav navbar-nav">        
+            
+             <li> <a runat="server" id="ProjectinformationLink" class="menu_error" href="projectinformation.aspx"><asp:Image ID="Image1" runat="server" ImageUrl="~/images/error.png" />Project information </a></li>
+             <li><a runat="server" id="ContinuationFormLink" class="menu_error" href="ContinuationForm.aspx"><asp:Image ID="Image10" runat="server" ImageUrl="~/images/error.png" />Continuation Form</a></li> 
+             <li><a runat="server" id="ContestantInformationLink" class="menu_error" href="contestants.aspx"><asp:Image ID="Image2" runat="server" ImageUrl="~/images/error.png" />Contestant Information</a> </li> 
+             <li><a runat="server" id="SupervisorInformationLink" class="menu_error" href="supervisorinformation.aspx"><asp:Image ID="Image3" runat="server" ImageUrl="~/images/error.png" />Supervisor Information</a></li> 
+             <li><a runat="server" id="AbstractSubmissionLink" class="menu_error" href="abstractsubmission.aspx"><asp:Image ID="Image4" runat="server" ImageUrl="~/images/error.png" />Abstract</a></li> 
+             <li> <a runat="server" id="ResearchPaperLink" class="menu_error" href="ResearchPaper.aspx"><asp:Image ID="Image5" runat="server" ImageUrl="~/images/error.png" />Research Paper</a></li>                 
+             <li> <a runat="server" id="FormStatusesLink" class="menu_error" href="FormStatuses.aspx"><asp:Image ID="Image7" runat="server" ImageUrl="~/images/error.png" />Required Forms</a></li> 
+             <li> <a runat="server" id="CheckListLink" class="menu_error" href="CheckList.aspx"><asp:Image ID="Image8" runat="server" ImageUrl="~/images/error.png" />Project Checklist</a></li> 
+             <li> <a runat="server" id="SubmitProjectLink" class="menu_error" href="submitproject.aspx" style="font-weight: bold"><asp:Image ID="Image9" runat="server" ImageUrl="~/images/error.png" />SUBMIT PROJECT</a></li> 
+             <li><br/></li>
+             <li><asp:Label ID="LabelPSname" runat="server" Text=""  Font-Bold="True" Height="17"></asp:Label></li>  
+             <li> <a class="menu" href="logout.aspx">Log Out</a></li> 
+             <li> <a runat="server" id="ProjectStatusLink" class="menu_error" href="ProjectStatus.aspx"><asp:Image ID="Image6" runat="server" ImageUrl="~/images/error.png" />Project Status</a></li>
+             <li><center> <a runat="server" id="CertLink" class="menu" href="../Certificate/Default.aspx" visible="False">DOWNLOAD CERTIFICATE<br/><img src="../images/certificate.png" height="150" width="150"></a></li>           
+            </ul> 
+      </div>
+        <div id="contentDiv">
+            <asp:ContentPlaceHolder ID="cp1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <br style="clear:both;" />
+         <script type="text/javascript">
+             var config = {
+                 '.chosen-select': {},
+                 '.chosen-select-deselect': { allow_single_deselect: true },
+                 '.chosen-select-no-single': { disable_search_threshold: 10 },
+                 '.chosen-select-no-results': { no_results_text: 'Oops, nothing found!' },
+                 '.chosen-select-width': { width: "95%" }
+             }
+             for (var selector in config) {
+                 $(selector).chosen(config[selector]);
+             }
+  </script>
+    </form>
+</div>
+<div id="bot">
+
+</div>
+
+    
+</body>
+
+</html>
+          

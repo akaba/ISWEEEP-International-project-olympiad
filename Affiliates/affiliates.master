@@ -1,0 +1,62 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="affiliates.master.cs" Inherits="Affiliates_affiliates" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>I-SWEEEP Affiliate Admin</title> 
+    <link href='../admin.css' rel='stylesheet' type='text/css' />
+    <link href="../chosen.css"  rel='stylesheet' type='text/css' />
+    <link href="../bootstrap.min.css"  rel='stylesheet' type='text/css' />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>  
+    <script  src="../Scripts/jquery-2.1.0.min.js" type="text/javascript"></script>  
+    <script src="../Scripts/chosen.jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+            //<![CDATA[ 
+            $(document).ready(function () {
+                var url = $(location).attr('href');
+                url = url.substr(url.lastIndexOf('/') + 1);
+                $('li:has(a[href="' + url + '"])').addClass('active');
+            });
+
+          
+            //]]>
+    </script> 
+</head>
+<body style="margin: 0px; padding: 0px; background-color: #e3ead9">
+    <form id="form1" runat="server">        
+
+    <div id="top">
+        AFFILIATE ADMIN INTERFACE
+    </div>
+     <div id="menuDiv" class="navbar-collapse collapse">
+       <ul class="nav navbar-nav">  
+        <li><a class="menu" href="CodeAssignment.aspx">Code Assignment</a></li> 
+        <li><a class="menu" href="Documents.aspx">Documents</a></li>  
+            <li><br/></li>      
+        <li><a class="menu" href="EditAccount.aspx">Edit Account</a></li>        
+        <li><a class="menu" href="logout.aspx">Log Out</a></li>        
+        </ul>
+       
+       
+    </div>
+    <div id="contentDiv">
+        <asp:contentplaceholder id="cp1" runat="server">
+        </asp:contentplaceholder>
+    </div>
+
+  <script type="text/javascript">
+            var config = {
+                '.chosen-select': {},
+                '.chosen-select-deselect': { allow_single_deselect: true },
+                '.chosen-select-no-single': { disable_search_threshold: 10 },
+                '.chosen-select-no-results': { no_results_text: 'Oops, nothing found!' },
+                '.chosen-select-width': { width: "95%" }
+            }
+            for (var selector in config) {
+                $(selector).chosen(config[selector]);
+            }
+  </script>
+    </form>
+</body>
+</html>

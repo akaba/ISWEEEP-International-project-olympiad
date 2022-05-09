@@ -1,0 +1,32 @@
+﻿<%@ Master Language="C#"  AutoEventWireup="true" CodeFile="Site.master.cs" Inherits="Site" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>I-SWEEEP </title>    
+    <link href='isweeep.css' rel='stylesheet' type='text/css' />
+    <link rel="shortcut icon" href="favicon.ico?v=1" type="image/x-icon" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+
+<body>
+<div id="top">
+    
+</div>
+<div id="content">
+    <form id="form1" runat="server">           
+        
+        <div id="contentDiv" style="margin-left:40px;">
+            <asp:ContentPlaceHolder ID="cp1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <br style="clear:both;">
+    </form>
+</div>
+<div id="bot">
+
+</div>
+</body>
+
+</html>
